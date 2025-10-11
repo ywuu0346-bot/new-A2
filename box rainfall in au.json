@@ -56,7 +56,7 @@
     }
   },
   "config": {
-    "box": {
+    "boxplot": {
       "median": { "color": "#1f4d7a" }
     },
     "font": "Garamond"
