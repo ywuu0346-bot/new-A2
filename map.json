@@ -2,7 +2,14 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 800,
   "height": 500,
-  "title": "Australia Rainfall (past 36 months)",
+  "title": {
+    "text": "Australia Rainfall (past 36 months)",
+    "font": "Garamond",
+    "fontSize": 20,
+    "fontWeight": "bold",
+    "color": "#333",
+    "anchor": "start"
+  },
   "projection": {
     "type": "mercator",
     "center": [134, -25],
@@ -60,12 +67,21 @@
         "color": {
           "field": "Rainfall (mm)",
           "type": "quantitative",
-          "title": "Total rainfall (mm, 36 months)",
+          "title": "Total rainfall (mm)",
           "scale": {
             "scheme": "blues",
             "domain": [300, 3000]
           },
-          "legend": {"format": ",.0f"}
+          "legend": {
+            "format": ",.0f",
+            "labelFont": "Garamond",
+            "labelFontSize": 12.5,
+            "titleFont": "Garamond",
+            "titleFontSize": 14,
+            "titleFontWeight": "bold",
+            "labelColor": "#333",
+            "titleColor": "#222"
+          }
         },
         "tooltip": [
           {"field": "Region", "title": "State / Territory"},
@@ -88,5 +104,17 @@
         "opacity": 0.9
       }
     }
-  ]
+  ],
+  "config": {
+    "font": "Garamond",
+    "axis": {
+      "labelFont": "Garamond",
+      "labelFontSize": 12,
+      "titleFont": "Garamond",
+      "titleFontSize": 13,
+      "titleFontWeight": "bold",
+      "labelColor": "#333",
+      "titleColor": "#333"
+    }
+  }
 }

@@ -1,14 +1,64 @@
 {
-  "$schema":"https://vega.github.io/schema/vega-lite/v5.json",
-  "width":760,"height":320,
-  "title":"Distribution of station rainfall by state (36 months)",
-  "data":{"url":"https://raw.githubusercontent.com/ywuu0346-bot/new-A2/refs/heads/main/data/rainfall.2025-08-31.36month.aus.csv"},
-  "transform":[{"filter":"isValid(datum['Rainfall (mm)'])"}],
-  "mark":{"type":"boxplot","extent":"min-max"},
-  "encoding":{
-    "x":{"field":"Region","type":"nominal","title":"State / Territory","sort":"-y"},
-    "y":{"field":"Rainfall (mm)","type":"quantitative","title":"Total rainfall (mm)","axis":{"format":",.0f"}},
-    "color":{"value":"#90caf9"}
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 760,
+  "height": 320,
+  "title": {
+    "text": "Distribution of station rainfall by state (36 months)",
+    "font": "Garamond",
+    "fontSize": 18,
+    "fontWeight": "bold",
+    "anchor": "start",
+    "color": "black"
   },
-  "config":{"box":{"median":{"color":"#1f4d7a"}}}
+  "data": {
+    "url": "https://raw.githubusercontent.com/ywuu0346-bot/new-A2/refs/heads/main/data/rainfall.2025-08-31.36month.aus.csv"
+  },
+  "transform": [
+    { "filter": "isValid(datum['Rainfall (mm)'])" }
+  ],
+  "mark": {
+    "type": "boxplot",
+    "extent": "min-max"
+  },
+  "encoding": {
+    "x": {
+      "field": "Region",
+      "type": "nominal",
+      "title": "State / Territory",
+      "sort": "-y",
+      "axis": {
+        "labelFont": "Garamond",
+        "labelFontSize": 12,
+        "labelColor": "#333",
+        "titleFont": "Garamond",
+        "titleFontSize": 13,
+        "titleFontWeight": "bold",
+        "titleColor": "#333"
+      }
+    },
+    "y": {
+      "field": "Rainfall (mm)",
+      "type": "quantitative",
+      "title": "Total rainfall (mm)",
+      "axis": {
+        "format": ",.0f",
+        "labelFont": "Garamond",
+        "labelFontSize": 12,
+        "labelColor": "#333",
+        "titleFont": "Garamond",
+        "titleFontSize": 13,
+        "titleFontWeight": "bold",
+        "titleColor": "#333"
+      }
+    },
+    "color": {
+      "value": "#90caf9"
+    }
+  },
+  "config": {
+    "box": {
+      "median": { "color": "#1f4d7a" }
+    },
+    "font": "Garamond"
+  }
 }
