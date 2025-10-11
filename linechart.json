@@ -1,0 +1,81 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Food vs Crop Index in Australia (2014–2022)",
+  "title": "Australia: Food Access vs Crop Output Index (2014–2022)",
+  "width": 600,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/ywuu0346-bot/new-A2/main/data/dv2data%20by%20country.csv"
+  },
+  "transform": [
+    { "filter": "datum['Country Name'] === 'Australia'" },
+    { "filter": "datum.Year < 2023" },
+    {
+      "fold": ["food_index_2014_2016_100", "crop_index_2014_2016_100"],
+      "as": ["Index Type", "Index Value"]
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "point": { "filled": true, "size": 50 }
+      },
+      "encoding": {
+        "x": { "field": "Year", "type": "ordinal", "title": "Year" },
+        "y": {
+          "field": "Index Value",
+          "type": "quantitative",
+          "title": "Index (2014–2016 = 100)"
+        },
+        "color": {
+          "field": "Index Type",
+          "type": "nominal",
+          "title": "Index Type",
+          "scale": {
+            "domain": ["food_index_2014_2016_100", "crop_index_2014_2016_100"],
+            "range": ["brown", "orange"]
+          },
+          "legend": {
+            "labelExpr": "datum.label === 'food_index_2014_2016_100' ? 'Food Index' : 'Crop Index'"
+          }
+        },
+        "tooltip": [
+          { "field": "Year", "type": "ordinal" },
+          { "field": "Index Type", "type": "nominal", "title": "Index Type" },
+          {
+            "field": "Index Value",
+            "type": "quantitative",
+            "format": ".2f",
+            "title": "Index Value"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Year": "2019",
+            "Index Value": 108,
+            "text": "COVID-19 impact"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dy": 12,
+        "dx": -13,
+        "fontSize": 13,
+        "fontStyle": "italic",
+        "color": "grey"
+      },
+      "encoding": {
+        "x": { "field": "Year", "type": "ordinal" },
+        "y": { "field": "Index Value", "type": "quantitative" },
+        "text": { "field": "text", "type": "nominal" }
+      }
+    }
+  ]
+}
