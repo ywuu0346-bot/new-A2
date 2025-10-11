@@ -1,0 +1,21 @@
+{
+  "$schema":"https://vega.github.io/schema/vega-lite/v5.json",
+  "width":700,"height":420,
+  "title":"Top 15 countries by irrigated agricultural land (%) – 2022",
+  "data":{"url":"https://raw.githubusercontent.com/ywuu0346-bot/3179/refs/heads/main/clean%20data.csv"},
+  "transform":[
+    {"filter":"length(datum['Country Code'])==3 && !isNaN(datum.irrigated_agri_pct)"},
+    {"window":[{"op":"rank","as":"r"}],"sort":[{"field":"irrigated_agri_pct","order":"descending"}]},
+    {"filter":"datum.r<=15"}
+  ],
+  "mark":"bar",
+  "encoding":{
+    "y":{"field":"Country Name","type":"nominal","sort":"-x","title":null},
+    "x":{"field":"irrigated_agri_pct","type":"quantitative","title":"Irrigated agricultural land (%)","axis":{"format":".0f"}},
+    "title":"Rainfall (mm)","scale":{"scheme":"blues"}},
+    "tooltip":[
+      {"field":"Country Name","title":"Country"},
+      {"field":"irrigated_agri_pct","title":"Irrigated (%)","format":".0f"},
+      {"field":"precip_mm","title":"Rainfall (mm)","format":",.0f"}
+    ]
+  }
