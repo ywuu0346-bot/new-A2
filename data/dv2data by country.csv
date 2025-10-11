@@ -1,4 +1,4 @@
-Country Name,Country Code,Year,fertilizer_consump_pct_of_prod,agri_land_pct,cereal_area_ha,irrigated_agri_pct,precip_mm,cereal_production_t,crop_index_2014_2016_100,food_index_2014_2016_100,cereal_yield_kgph,aquaculture_t,capture_fish_t,fish_total_t
+Country Name,Country Code,Year,fertilizer_consump_pct_of_prod,agri_land_pct,cereal_area_ha,irrigated_agri_pct,precip_mm,cereal_production_t,crop_index,food_index,cereal_yield_kgph,aquaculture_t,capture_fish_t,fish_total_t
 Afghanistan,AFG,2014,495.0867957636147,58.12366803121598,3344733.0,5.742548140332366,327.0,7012523.28,100.31,101.99,2096.6,4760.0,1600.0,6360.0
 Afghanistan,AFG,2015,648.398821833678,58.12366803121598,2724070.0,5.710894223160116,327.0,6010288.0,95.65,95.97,2206.4,5450.0,1750.0,7200.0
 Afghanistan,AFG,2016,662.6182866453594,58.12366803121598,2793694.0,6.481139541018201,327.0,5708330.42,104.04,102.04,2043.3,6150.0,1900.0,8050.0
