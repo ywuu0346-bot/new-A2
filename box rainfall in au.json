@@ -2,7 +2,7 @@
   "$schema":"https://vega.github.io/schema/vega-lite/v5.json",
   "width":760,"height":320,
   "title":"Distribution of station rainfall by state (36 months)",
-  "data":{"url":"https://raw.githubusercontent.com/ywuu0346-bot/3179/refs/heads/main/rainfall.2025-08-31.36month.aus.csv"},
+  "data":{"url":"https://raw.githubusercontent.com/ywuu0346-bot/new-A2/refs/heads/main/data/rainfall.2025-08-31.36month.aus.csv"},
   "transform":[{"filter":"isValid(datum['Rainfall (mm)'])"}],
   "mark":{"type":"boxplot","extent":"min-max"},
   "encoding":{
