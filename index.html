@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Rain & Agriculture – Week 10</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+  <link rel="stylesheet"
+        href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"
+        integrity="sha384-Uu6wSO1c+zbi22z7sDsmkdf2o58n5d1oC1fGmWQ/xT1T0uPZ9cU7QWQ7bzG0hZ6g"
+        crossorigin="anonymous">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; margin: 16px; }
+    .page { max-width: 1180px; margin: 0 auto; }
+    h1 { margin: 0 0 6px 0; }
+    .sub { color:#555; margin: 0 0 20px 0; }
+    .viz { border: 1px solid #eee; border-radius: 8px; padding: 8px; background:#fff; }
+    .caption { color:#666; font-size: 14px; margin-top: 8px; }
+    .section-title { margin: 6px 0 10px; }
+    @media (max-width: 900px) {
+      .pure-u-1-2 { width: 100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <h1>Rainfall & Agriculture Visualisations (2024)</h1>
+
+    <!-- 第一组图 -->
+    <div class="pure-g" style="gap: 16px;">
+      <div class="pure-u-1-2">
+        <h2 class="section-title">Australia Rainfall (past 36 months)</h2>
+        <div id="map" class="viz"></div>
+        <div class="caption">
+          Bubble size = total rainfall (mm); colour = percentile vs history.
+          Data: BOM rainfall stations.
+        </div>
+      </div>
+
+      <div class="pure-u-1-2">
+        <h2 class="section-title">Rainfall vs Cereal Yield (2022)</h2>
+        <div id="scatter" class="viz"></div>
+        <div class="caption">
+          X = mean annual rainfall (mm), Y = cereal yield (kg/ha), colour = agricultural land (% of land).
+          Data: World Bank WDI (CC BY 4.0).
+        </div>
+      </div>
+    </div>
+
+    <!-- 第二组图 -->
+    <div class="pure-g" style="gap: 16px; margin-top: 24px;">
+      <div class="pure-u-1-2">
+        <h2 class="section-title">Boxplot: Rainfall in Australia</h2>
+        <div id="box" class="viz"></div>
+        <div class="caption">
+          Yearly rainfall distribution across regions or stations in Australia.
+        </div>
+      </div>
+
+      <div class="pure-u-1-2">
+        <h2 class="section-title">Agricultural Trends: Line Chart</h2>
+        <div id="linechart" class="viz"></div>
+        <div class="caption">
+          Long-term trend of agricultural indicators over time.
+        </div>
+      </div>
+    </div>
+
+    <!-- 第三个图 -->
+    <div class="pure-g" style="gap: 16px; margin-top: 24px;">
+      <div class="pure-u-1">
+        <h2 class="section-title">Cereal Production vs Area</h2>
+        <div id="linebar" class="viz"></div>
+        <div class="caption">
+          Comparison of total cereal production (line) vs. land area under cereal cultivation (bar).
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const MAP_SPEC_URL = "map.json";
+    const SCATTER_SPEC_URL = "scatter plot.json";
+    const BOX_SPEC_URL = "box rainfall in au.json";
+    const LINECHART_SPEC_URL = "linechart.json";
+    const LINEBAR_SPEC_URL = "line and bar.json";
+
+    vegaEmbed("#map", MAP_SPEC_URL, { actions:false });
+    vegaEmbed("#scatter", SCATTER_SPEC_URL, { actions:false });
+    vegaEmbed("#box", BOX_SPEC_URL, { actions:false });
+    vegaEmbed("#linechart", LINECHART_SPEC_URL, { actions:false });
+    vegaEmbed("#linebar", LINEBAR_SPEC_URL, { actions:false });
+  </script>
+</body>
+</html>
