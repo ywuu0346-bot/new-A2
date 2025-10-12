@@ -1,0 +1,109 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Cereal Production vs Cereal Area in Australia (2014–2023)",
+  "title": {
+    "text": "Australia: Cereal Production vs Cereal Area (2014–2023)",
+    "font": "Garamond",
+    "fontSize": 18,
+    "fontWeight": "bold",
+    "anchor": "start",
+    "color": "black"
+  },
+  "width": 650,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/ywuu0346-bot/new-A2/main/data/dv2data%20by%20country.csv"
+  },
+  "transform": [
+    { "filter": "datum['Country Name'] === 'Australia'" },
+    { "filter": "datum.Year <= 2023" },
+    {
+      "fold": ["cereal_production_t", "cereal_area_ha"],
+      "as": ["Type", "Value"]
+    }
+  ],
+  "layer": [
+    {
+      "transform": [{ "filter": "datum.Type === 'cereal_area_ha'" }],
+      "mark": {
+        "type": "bar",
+        "color": "#cc7722",
+        "opacity": 0.8
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "ordinal",
+          "scale": { "bandPaddingInner": 0.3, "bandPaddingOuter": 0.1 },
+          "title": "Year",
+          "axis": { "labelFont": "Garamond" }
+        },
+        "y": {
+          "field": "Value",
+          "type": "quantitative",
+          "title": "Cereal Area (hectares)",
+          "axis": {
+            "orient": "right",
+            "titleColor": "black",
+            "labelFont": "Garamond"
+          }
+        },
+        "tooltip": [
+          { "field": "Year", "type": "ordinal" },
+          { "field": "Value", "title": "Area (ha)", "format": ",.0f" }
+        ]
+      }
+    },
+    {
+      "transform": [{ "filter": "datum.Type === 'cereal_production_t'" }],
+      "mark": {
+        "type": "line",
+        "color": "yellow",
+        "strokeWidth": 2,
+        "point": { "filled": true, "size": 50, "color": "yellow" }
+      },
+      "encoding": {
+        "x": { "field": "Year", "type": "ordinal" },
+        "y": {
+          "field": "Value",
+          "type": "quantitative",
+          "title": "Cereal Production (tonnes)",
+          "axis": {
+            "titleColor": "yellow",
+            "labelFont": "Garamond"
+          }
+        },
+        "tooltip": [
+          { "field": "Year", "type": "ordinal" },
+          { "field": "Value", "title": "Production (t)", "format": ",.0f" }
+        ]
+      }
+    }
+  ],
+  "encoding": {
+    "color": {
+      "field": "Type",
+      "type": "nominal",
+      "scale": {
+        "domain": ["cereal_production_t", "cereal_area_ha"],
+        "range": ["#c62828", "#cc7722"]
+      },
+      "legend": {
+        "title": "Indicator",
+        "labelExpr": "datum.label === 'cereal_production_t' ? 'Cereal Production' : 'Cereal Area'",
+        "labelFont": "Garamond",
+        "labelFontSize": 13,
+        "titleFont": "Garamond",
+        "titleFontWeight": "bold",
+        "titleFontSize": 14
+      }
+    }
+  },
+  "config": {
+    "axis": {
+      "labelFont": "Garamond",
+      "titleFont": "Garamond",
+      "titleFontSize": 14
+    }
+  }
+}
