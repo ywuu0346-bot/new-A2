@@ -43,7 +43,7 @@
           "type": "quantitative",
           "title": "Cereal Area (hectares)",
           "axis": {
-            "orient": "right",
+            "orient": "left",
             "titleColor": "black",
             "labelFont": "Garamond"
           }
@@ -58,9 +58,9 @@
       "transform": [{ "filter": "datum.Type === 'cereal_production_t'" }],
       "mark": {
         "type": "line",
-        "color": "yellow",
+        "color": "yellowgreen",
         "strokeWidth": 2,
-        "point": { "filled": true, "size": 50, "color": "yellow" }
+        "point": { "filled": true, "size": 50, "color": "yellowgreen" }
       },
       "encoding": {
         "x": { "field": "Year", "type": "ordinal" },
@@ -69,7 +69,7 @@
           "type": "quantitative",
           "title": "Cereal Production (tonnes)",
           "axis": {
-            "titleColor": "yellow",
+            "titleColor": "yellowgreen",
             "labelFont": "Garamond"
           }
         },
