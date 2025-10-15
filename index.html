@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <title>Rain & Agriculture</title>
+  <title>Australian Agriculture and Rainfall</title>
 
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
@@ -15,15 +15,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; margin: 16px; }
-    .page { max-width: 1180px; margin: 0 auto; }
-    h1 { margin: 0 0 6px 0; }
-    .sub { color:#555; margin: 0 0 20px 0; }
-    .viz { border: 1px solid #eee; border-radius: 8px; padding: 8px; background:#fff; }
-    .caption { color:#666; font-size: 14px; margin-top: 8px; }
-    .section-title { margin: 6px 0 10px; }
+    body {
+      font-family: Garamond, serif;
+      margin: 16px;
+    }
+
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      margin: 0 0 6px 0;
+      font-family: Garamond, serif;
+    }
+
+    .sub {
+      color:#555;
+      margin: 0 0 20px 0;
+      font-family: Garamond, serif;
+    }
+
+    .viz {
+      border: 1px solid #eee;
+      border-radius: 8px;
+      padding: 8px;
+      background:#fff;
+    }
+
+    .caption {
+      color:#666;
+      font-size: 14px;
+      margin-top: 8px;
+      font-family: Garamond, serif;
+    }
+
+    .section-title {
+      margin: 6px 0 10px;
+      font-family: Garamond, serif;
+    }
+
     @media (max-width: 900px) {
-      .pure-u-1-2 { width: 100%; }
+      .pure-u-1-2 {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -31,9 +66,8 @@
 <body>
   <div class="page">
 
-    <h1>Rainfall & Agriculture Visualisations</h1>
+    <h1>Australian Agriculture and Rainfall</h1>
 
-    <!-- 第一组图 -->
     <div class="pure-g" style="gap: 16px;">
       <div class="pure-u-1-2">
         <h2 class="section-title">Australia Rainfall (past 36 months)</h2>
@@ -43,8 +77,8 @@
           Data: BOM rainfall stations.
         </div>
       </div>
+    </div>
 
-          <!-- 第二组图 -->
     <div class="pure-g" style="gap: 16px; margin-top: 24px;">
       <div class="pure-u-1-2">
         <h2 class="section-title">Boxplot: Rainfall in Australia</h2>
@@ -58,12 +92,13 @@
         <h2 class="section-title">Rainfall vs Cereal Yield (2022)</h2>
         <div id="scatter" class="viz"></div>
         <div class="caption">
-          X = mean annual rainfall (mm), Y = cereal yield (kg/ha), colour = agricultural land (% of land).
+          X = mean annual rainfall (mm), Y = cereal yield (kg/ha), colour = agricultural land (% of land).<br>
           Data: World Bank WDI (CC BY 4.0).
         </div>
       </div>
     </div>
 
+    <div class="pure-g" style="gap: 16px; margin-top: 24px;">
       <div class="pure-u-1-2">
         <h2 class="section-title">Agricultural Trends: Line Chart</h2>
         <div id="linechart" class="viz"></div>
@@ -71,11 +106,8 @@
           Long-term trend of agricultural indicators over time.
         </div>
       </div>
-    </div>
 
-    <!-- 第三个图 -->
-    <div class="pure-g" style="gap: 16px; margin-top: 24px;">
-      <div class="pure-u-1">
+      <div class="pure-u-1-2">
         <h2 class="section-title">Cereal Production vs Area</h2>
         <div id="linebar" class="viz"></div>
         <div class="caption">
