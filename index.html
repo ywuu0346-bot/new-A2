@@ -16,43 +16,60 @@
 
   <style>
     body {
-      font-family: Garamond, serif;
-      margin: 16px;
-    }
-
-    .page {
-      max-width: 1180px;
+      font-family: 'Garamond', serif;
+      font-size: 17px;
+      color: #333;
+      line-height: 1.6;
       margin: 0 auto;
     }
 
     h1 {
-      margin: 0 0 6px 0;
-      font-family: Garamond, serif;
+      color: rgb(93, 133, 208);
+      margin: 0 0 12px 0;
+      font-size: 32px;
+      text-align: center;
     }
 
-    .sub {
-      color:#555;
-      margin: 0 0 20px 0;
-      font-family: Garamond, serif;
+    h2.section-title {
+      color: rgb(93, 133, 208);
+      margin: 24px 0 10px;
+      font-size: 24px;
+    }
+
+    .intro {
+      font-size: 24px;
+      color: #333;
+      line-height: 1.15;
+      margin: 5px auto 20px auto;
+      max-width: 880px;
+      text-align: justify;
+    }
+
+    .rain-desc {
+      font-size: 22px;
+      color: #333;
+      line-height: 1.65;
+      text-align: justify;
+      padding-left: 5px;
+      padding-right: 6px;
     }
 
     .viz {
       border: 1px solid #eee;
       border-radius: 8px;
       padding: 8px;
-      background:#fff;
+      background: #fff;
     }
 
     .caption {
-      color:#666;
+      color: #666;
       font-size: 14px;
       margin-top: 8px;
-      font-family: Garamond, serif;
     }
 
-    .section-title {
-      margin: 6px 0 10px;
-      font-family: Garamond, serif;
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
     }
 
     @media (max-width: 900px) {
@@ -65,54 +82,162 @@
 
 <body>
   <div class="page">
-
     <h1>Australian Agriculture and Rainfall</h1>
 
-    <div class="pure-g" style="gap: 16px;">
+    <div class="intro">
+      <p>
+        Australia’s agricultural sector operates under highly variable climatic conditions,
+        where rainfall plays a pivotal role in determining crop productivity.
+        In recent years, changing precipitation patterns and increasing climate volatility
+        have raised concerns about the sustainability and resilience of agricultural systems.
+      </p>
+    </div>
+
+    <!-- Section 1: Rainfall Map -->
+    <div class="pure-g" style="gap: 16px; margin-top: 32px;">
       <div class="pure-u-1-2">
-        <h2 class="section-title">Australia Rainfall (past 36 months)</h2>
+        <h2 class="section-title">Where Does It Rain in Australia?</h2>
         <div id="map" class="viz"></div>
-        <div class="caption">
-          Bubble size = total rainfall (mm); colour = percentile vs history.
-          Data: BOM rainfall stations.
-        </div>
+      </div>
+
+      <div class="pure-u-1-2 rain-desc">
+        <p>
+          This map visualizes the spatial distribution of rainfall across Australia over the past three years.
+          The colour indicates how wet each location was compared to its long-term historical average.
+        </p>
+        <p>
+          We observe that <strong>northeastern and southeastern coastal regions</strong>, such as
+          <strong>Queensland(QLD)</strong> and parts of <strong>New South Wales(NSW)</strong>,
+          have experienced consistently high rainfall, both in absolute terms and relative to history.
+          In contrast, <strong>central and western inland areas</strong>—notably parts of
+          <strong>Western Australia(WA)</strong>, <strong>South Australia (SA)</strong>, and the
+          <strong>Northern Territory (NT)</strong>—have remained <strong>exceptionally dry</strong>,
+          with many locations falling in the lowest rainfall percentiles.
+        </p>
+        <p>
+          This pattern underscores a key challenge for Australian agriculture:
+          <strong>water availability is not only limited but also geographically concentrated</strong>.
+          Regions with higher rainfall support more intensive and reliable farming, while drier inland zones face increasing
+          exposure to drought risk and must rely more heavily on irrigation or drought-resistant practices.
+          These disparities drive <strong>uneven agricultural productivity</strong> across the country and shape
+          regional adaptation strategies.
+        </p>
       </div>
     </div>
 
-    <div class="pure-g" style="gap: 16px; margin-top: 24px;">
+    <!-- Section 2: Box -->
+    <div class="pure-g" style="gap: 16px; margin-top: 32px;">
       <div class="pure-u-1-2">
-        <h2 class="section-title">Boxplot: Rainfall in Australia</h2>
+        <h2 class="section-title">Regional Rainfall Variations</h2>
         <div id="box" class="viz"></div>
-        <div class="caption">
-          Yearly rainfall distribution across regions or stations in Australia.
-        </div>
       </div>
 
+      <div class="pure-u-1-2 rain-desc">
+        <p>
+          This boxplot visualizes how total rainfall varies across Australian states and territories over the past 36 months.
+          The <strong>height of each box</strong> and the <strong>length of the whiskers</strong> reflect rainfall variability.
+        </p>
+
+        <p>
+          States such as <strong></strong> and the <strong>NT</strong> show the
+          widest interquartile ranges and extreme outliers, indicating high unpredictability. Conversely,
+          <strong>VIC</strong> and <strong>SA</strong> exhibit more clustered distributions,
+          suggesting more consistent rainfall patterns.
+        </p>
+
+        <p>
+          Understanding regional rainfall variability helps identify areas that may face <strong>climate instability</strong>
+          and informs strategies for crop selection, irrigation planning, and drought preparedness.
+        </p>
+      </div>
+    </div>
+
+
+    <!-- Section 3: Scatter plot -->
+    <div class="pure-g" style="gap: 16px; margin-top: 32px;">
       <div class="pure-u-1-2">
-        <h2 class="section-title">Rainfall vs Cereal Yield (2022)</h2>
+        <h2 class="section-title">Impact of Rainfall on Yield: More Water Equals More Grain?</h2>
         <div id="scatter" class="viz"></div>
         <div class="caption">
-          X = mean annual rainfall (mm), Y = cereal yield (kg/ha), colour = agricultural land (% of land).<br>
+          X = mean annual rainfall (mm), Y = cereal yield (kg/ha).<br>
           Data: World Bank WDI (CC BY 4.0).
         </div>
       </div>
+
+      <div class="pure-u-1-2 rain-desc">
+        <p>
+          This scatterplot explores the relationship between <strong>mean annual rainfall</strong> and 
+          <strong>cereal yield (kg/ha)</strong> across countries in 2022. Each dot represents one country. 
+          Vertical and horizontal dashed lines show the global average rainfall and yield respectively.
+        </p>
+        <p>
+          While there is some positive association between rainfall and cereal productivity, 
+          the relationship is <strong>not strictly linear</strong>. Some countries achieve high yields with 
+          moderate rainfall, suggesting that <strong>irrigation, technology, or crop selection</strong> 
+          also play critical roles. 
+        </p>
+        <p>
+          <strong>Australia</strong> stands out: despite receiving less than average rainfall, 
+          it manages to maintain relatively high cereal yields. This indicates 
+          <strong>efficient water management and farming practices</strong> in dry conditions.
+        </p>
+      </div>
     </div>
 
-    <div class="pure-g" style="gap: 16px; margin-top: 24px;">
+
+    <!-- Section 4: line chart -->
+    <div class="pure-g" style="gap: 16px; margin-top: 32px;">
       <div class="pure-u-1-2">
-        <h2 class="section-title">Agricultural Trends: Line Chart</h2>
+        <h2 class="section-title">Time-Series Trends With Agricultural Indicators</h2>
         <div id="linechart" class="viz"></div>
-        <div class="caption">
-          Long-term trend of agricultural indicators over time.
-        </div>
       </div>
 
+      <div class="pure-u-1-2 rain-desc">
+        <p>
+          This line chart compares <strong>Australia’s Food Access Index</strong> and <strong>Crop Output Index</strong>
+          from <strong>2014 to 2022</strong>, revealing important dynamics in food production and availability.
+        </p>
+        <p>
+          Between 2014 and 2017, both indices remained relatively stable around the baseline (2014–2016 average = 100).
+          A sharp increase in <strong>crop output</strong> occurred in 2017, followed by a significant decline during the
+          <strong>COVID-19 period (2019–2020)</strong>, likely reflecting weather shocks, supply chain disruptions,
+          and shifting demand.
+        </p>
+        <p>
+          Notably, while crop output rebounded rapidly after 2020—reaching a new high in 2022—the <strong>Food Index</strong>
+          rose more modestly. This divergence suggests that although agricultural production recovered strongly,
+          improvements in food availability and access were <strong>slower and less consistent</strong>.
+        </p>
+        <p>
+          These trends highlight the importance of resilient food systems: <strong>high output alone does not guarantee
+          equitable food access</strong>. Ensuring that gains in productivity translate into accessible, stable food
+          supplies remains a key policy challenge.
+        </p>
+      </div>
+    </div>
+
+
+
+    <!-- Section 5: line chart and bar -->
+    <div class="pure-g" style="gap: 16px; margin-top: 32px;">
       <div class="pure-u-1-2">
-        <h2 class="section-title">Cereal Production vs Area</h2>
+        <h2 class="section-title">The Relationship Between Yield and Area</h2>
         <div id="linebar" class="viz"></div>
-        <div class="caption">
-          Comparison of total cereal production (line) vs. land area under cereal cultivation (bar).
-        </div>
+      </div>
+
+      <div class="pure-u-1-2 rain-desc">
+        <p>
+          This chart compares Australia’s <strong>cereal production</strong> (in tonnes) with the <strong>total area used for cereal crops</strong> (in hectares) from 2014 to 2023.
+        </p>
+        <p>
+          While the area allocated to cereal farming has remained relatively stable throughout the decade—hovering around 18–20 million hectares—the total production volume has shown significant <strong>year-to-year fluctuations</strong>. 
+        </p>
+        <p>
+          For example, <strong>2017 and 2021–2023</strong> were peak years with production exceeding 50 million tonnes, highlighting periods of highly favourable growing conditions. In stark contrast, production <strong>plummeted in 2020</strong> to around 26 million tonnes, despite the planted area being similar. This stark drop underscores how external factors such as <strong>drought, floods, or economic disruptions</strong> (e.g. COVID-19) can heavily influence agricultural output.
+        </p>
+        <p>
+          These variations suggest that while land availability is a steady resource, Australia’s cereal production remains vulnerable to <strong>climate shocks and supply chain pressures</strong>. Policymakers and farmers must plan for this variability to maintain food security and export reliability.
+        </p>
       </div>
     </div>
 
@@ -125,11 +250,11 @@
     const LINECHART_SPEC_URL = "linechart.json";
     const LINEBAR_SPEC_URL = "line and bar.json";
 
-    vegaEmbed("#map", MAP_SPEC_URL, { actions:false });
-    vegaEmbed("#scatter", SCATTER_SPEC_URL, { actions:false });
-    vegaEmbed("#box", BOX_SPEC_URL, { actions:false });
-    vegaEmbed("#linechart", LINECHART_SPEC_URL, { actions:false });
-    vegaEmbed("#linebar", LINEBAR_SPEC_URL, { actions:false });
+    vegaEmbed("#map", MAP_SPEC_URL, { actions: false });
+    vegaEmbed("#scatter", SCATTER_SPEC_URL, { actions: false });
+    vegaEmbed("#box", BOX_SPEC_URL, { actions: false });
+    vegaEmbed("#linechart", LINECHART_SPEC_URL, { actions: false });
+    vegaEmbed("#linebar", LINEBAR_SPEC_URL, { actions: false });
   </script>
 </body>
 </html>

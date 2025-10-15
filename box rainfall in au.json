@@ -7,7 +7,7 @@
     "font": "Garamond",
     "fontSize": 18,
     "fontWeight": "bold",
-    "anchor": "start",
+    "anchor": "middle",
     "color": "black"
   },
   "data": {
@@ -30,6 +30,7 @@
         "labelFont": "Garamond",
         "labelFontSize": 12,
         "labelColor": "#333",
+        "labelAngle": 0,
         "titleFont": "Garamond",
         "titleFontSize": 13,
         "titleFontWeight": "bold",

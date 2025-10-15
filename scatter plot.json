@@ -7,7 +7,7 @@
     "font": "Garamond",
     "fontSize": 18,
     "fontWeight": "bold",
-    "anchor": "start",
+    "anchor": "middle",
     "color": "black"
   },
   "data": {
@@ -67,6 +67,7 @@
 
   "layer": [
     {
+      "transform": [{ "filter": "datum['Country Name'] != 'Australia'" }],
       "mark": {
         "type": "point",
         "filled": true,
@@ -74,7 +75,7 @@
         "opacity": 0.85,
         "stroke": "#2c3e50",
         "strokeWidth": 0.2,
-        "color": "#4CAF50"
+        "color": "#93e59a"
       },
       "encoding": {
         "x": {
@@ -98,54 +99,52 @@
     },
 
     {
-      "transform": [
-        {
-          "aggregate": [
-            { "op": "mean", "field": "precip_mm", "as": "xmean" }
-          ]
-        }
-      ],
+      "transform": [{ "filter": "datum['Country Name'] == 'Australia'" }],
       "mark": {
-        "type": "rule",
-        "strokeDash": [4, 4],
-        "color": "#9e9e9e"
+        "type": "point",
+        "filled": true,
+        "size": 90,
+        "opacity": 1,
+        "color": "#aa59c3dc",
+        "strokeWidth": 1.5
       },
       "encoding": {
-        "x": { "field": "xmean", "type": "quantitative" }
-      }
-    },
-    {
-      "transform": [
-        {
-          "aggregate": [
-            { "op": "mean", "field": "cereal_yield_kgph", "as": "ymean" }
-          ]
-        }
-      ],
-      "mark": {
-        "type": "rule",
-        "strokeDash": [4, 4],
-        "color": "#9e9e9e"
-      },
-      "encoding": {
-        "y": { "field": "ymean", "type": "quantitative" }
+        "x": { "field": "precip_mm", "type": "quantitative" },
+        "y": { "field": "cereal_yield_kgph", "type": "quantitative" },
+        "tooltip": [
+          { "field": "country", "title": "Country" },
+          { "field": "precip_mm", "title": "Rainfall (mm)", "format": ",.0f" },
+          { "field": "cereal_yield_kgph", "title": "Cereal yield (kg/ha)", "format": ",.0f" }
+        ]
       }
     },
 
     {
       "transform": [
-        {
-          "filter": "datum['Country Name'] == 'Australia'"
-        }
+        { "aggregate": [{ "op": "mean", "field": "precip_mm", "as": "xmean" }] }
       ],
+      "mark": { "type": "rule", "strokeDash": [4, 4], "color": "#9e9e9e" },
+      "encoding": { "x": { "field": "xmean", "type": "quantitative" } }
+    },
+
+    {
+      "transform": [
+        { "aggregate": [{ "op": "mean", "field": "cereal_yield_kgph", "as": "ymean" }] }
+      ],
+      "mark": { "type": "rule", "strokeDash": [4, 4], "color": "#9e9e9e" },
+      "encoding": { "y": { "field": "ymean", "type": "quantitative" } }
+    },
+
+    {
+      "transform": [{ "filter": "datum['Country Name'] == 'Australia'" }],
       "mark": {
         "type": "text",
-        "dx": 6,
-        "dy": -6,
+        "dx": 8,
+        "dy": -8,
         "fontSize": 12,
         "fontWeight": "bold",
         "font": "Garamond",
-        "fill": "#37474f"
+        "fill": "#1e88e5"
       },
       "encoding": {
         "x": { "field": "precip_mm", "type": "quantitative" },

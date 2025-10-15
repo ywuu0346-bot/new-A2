@@ -6,7 +6,7 @@
     "font": "Garamond",
     "fontSize": 18,
     "fontWeight": "bold",
-    "anchor": "start",
+    "anchor": "middle",
     "color": "black"
   },
   "width": 650,
@@ -27,16 +27,21 @@
       "transform": [{ "filter": "datum.Type === 'cereal_area_ha'" }],
       "mark": {
         "type": "bar",
-        "color": "#cc7722",
         "opacity": 0.8
       },
       "encoding": {
         "x": {
           "field": "Year",
           "type": "ordinal",
-          "scale": { "bandPaddingInner": 0.3, "bandPaddingOuter": 0.1 },
+          "scale": {
+            "bandPaddingInner": 0.3,
+            "bandPaddingOuter": 0.1
+          },
           "title": "Year",
-          "axis": { "labelFont": "Garamond" }
+          "axis": {
+            "labelFont": "Garamond",
+            "labelAngle": 0
+          }
         },
         "y": {
           "field": "Value",
@@ -46,6 +51,19 @@
             "orient": "left",
             "titleColor": "black",
             "labelFont": "Garamond"
+          }
+        },
+        "color": {
+          "field": "Type",
+          "type": "nominal",
+          "scale": {
+            "domain": ["cereal_production_t", "cereal_area_ha"],
+            "range": ["teal", "#dd9349"]
+          },
+          "legend": {
+            "title": "Indicator",
+            "labelExpr": "datum.label === 'cereal_production_t' ? 'Cereal Production' : 'Cereal Area'",
+            "orient": "right"
           }
         },
         "tooltip": [
@@ -58,19 +76,38 @@
       "transform": [{ "filter": "datum.Type === 'cereal_production_t'" }],
       "mark": {
         "type": "line",
-        "color": "yellowgreen",
         "strokeWidth": 2,
-        "point": { "filled": true, "size": 50, "color": "yellowgreen" }
+        "point": {
+          "filled": true,
+          "size": 50
+        }
       },
       "encoding": {
-        "x": { "field": "Year", "type": "ordinal" },
+        "x": {
+          "field": "Year",
+          "type": "ordinal",
+          "axis": { "labelAngle": 0 }
+        },
         "y": {
           "field": "Value",
           "type": "quantitative",
           "title": "Cereal Production (tonnes)",
           "axis": {
-            "titleColor": "yellowgreen",
+            "titleColor": "teal",
             "labelFont": "Garamond"
+          }
+        },
+        "color": {
+          "field": "Type",
+          "type": "nominal",
+          "scale": {
+            "domain": ["cereal_production_t", "cereal_area_ha"],
+            "range": ["teal", "#dd9349"]
+          },
+          "legend": {
+            "title": "Indicator",
+            "labelExpr": "datum.label === 'cereal_production_t' ? 'Cereal Production' : 'Cereal Area'",
+            "orient": "right"
           }
         },
         "tooltip": [
@@ -78,31 +115,71 @@
           { "field": "Value", "title": "Production (t)", "format": ",.0f" }
         ]
       }
-    }
-  ],
-  "encoding": {
-    "color": {
-      "field": "Type",
-      "type": "nominal",
-      "scale": {
-        "domain": ["cereal_production_t", "cereal_area_ha"],
-        "range": ["#c62828", "#cc7722"]
+    },
+    {
+      "transform": [
+        {
+          "filter": "(datum.Type === 'cereal_production_t') && (datum.Year == 2017)"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": -23,
+        "dy": -10,
+        "font": "Garamond",
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "fill": "black"
       },
-      "legend": {
-        "title": "Indicator",
-        "labelExpr": "datum.label === 'cereal_production_t' ? 'Cereal Production' : 'Cereal Area'",
-        "labelFont": "Garamond",
-        "labelFontSize": 13,
-        "titleFont": "Garamond",
-        "titleFontWeight": "bold",
-        "titleFontSize": 14
+      "encoding": {
+        "x": { "field": "Year", "type": "ordinal" },
+        "y": { "field": "Value", "type": "quantitative" },
+        "text": {
+          "field": "Value",
+          "type": "quantitative",
+          "format": ",.0f"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "(datum.Type === 'cereal_production_t') && (datum.Year == 2020)"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": -23,
+        "dy": 15,
+        "font": "Garamond",
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "fill": "black"
+      },
+      "encoding": {
+        "x": { "field": "Year", "type": "ordinal" },
+        "y": { "field": "Value", "type": "quantitative" },
+        "text": {
+          "field": "Value",
+          "type": "quantitative",
+          "format": ",.0f"
+        }
       }
     }
-  },
+  ],
   "config": {
     "axis": {
       "labelFont": "Garamond",
       "titleFont": "Garamond",
+      "titleFontSize": 14
+    },
+    "legend": {
+      "labelFont": "Garamond",
+      "labelFontSize": 13,
+      "titleFont": "Garamond",
+      "titleFontWeight": "bold",
       "titleFontSize": 14
     }
   }

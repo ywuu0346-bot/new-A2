@@ -6,7 +6,7 @@
     "font": "Garamond",
     "fontSize": 18,
     "fontWeight": "bold",
-    "anchor": "start",
+    "anchor": "middle",
     "color": "black"
   },
   "width": 600,
