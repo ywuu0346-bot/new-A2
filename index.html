@@ -9,7 +9,6 @@
 
   <link rel="stylesheet"
         href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"
-        integrity="sha384-Uu6wSO1c+zbi22z7sDsmkdf2o58n5d1oC1fGmWQ/xT1T0uPZ9cU7QWQ7bzG0hZ6g"
         crossorigin="anonymous">
   
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
@@ -297,17 +296,17 @@
         <!-- Section 1: Rainfall Distribution -->
         <h2 class="section-title">Where Does It Rain in Australia?</h2>
         
-        <div class="pure-g" style="gap: 20px; margin-bottom: 30px;">
-          <div class="pure-u-1-2">
-            <div class="figure-container">
-              <div id="map" class="viz"></div>
-              <div class="figure-caption">
-                This map visualizes the spatial distribution of rainfall across Australia over the past three years. The colour indicates how wet each location was compared to its long-term historical average.
-              </div>
-            </div>
+        <div class="figure-container" style="margin-bottom: 30px;">
+          <div class="viz">
+            <div id="map"></div>
           </div>
+          <div class="figure-caption">
+            This map visualizes the spatial distribution of rainfall across Australia over the past three years. The colour indicates how wet each location was compared to its long-term historical average.
+          </div>
+        </div>
 
-          <div class="pure-u-1-2">
+        <div class="pure-g" style="gap: 20px; margin-bottom: 30px;">
+          <div class="pure-u-1">
             <div class="content-text">
               <p>
                 We observe that northeastern and southeastern coastal regions, such as <strong>Queensland(QLD)</strong> and parts of <strong>New South Wales(NSW)</strong>, have experienced consistently high rainfall, both in absolute terms and relative to history. In contrast, central and western inland areas—notably parts of <strong>Western Australia(WA)</strong>, <strong>South Australia (SA)</strong>, and the <strong>Northern Territory (NT)</strong>—have remained exceptionally dry, with many locations falling in the lowest rainfall percentiles.
@@ -322,17 +321,17 @@
         <!-- Section 2: Regional Variability Analysis -->
         <h2 class="section-title">Regional Rainfall Variations</h2>
         
-        <div class="pure-g" style="gap: 20px; margin-bottom: 30px;">
-          <div class="pure-u-1-2">
-            <div class="figure-container">
-              <div id="box" class="viz"></div>
-              <div class="figure-caption">
-                This boxplot visualizes how total rainfall varies across Australian states and territories over the past 36 months. The height of each box and the length of the whiskers reflect rainfall variability.
-              </div>
-            </div>
+        <div class="figure-container" style="margin-bottom: 30px;">
+          <div class="viz">
+            <div id="box"></div>
           </div>
+          <div class="figure-caption">
+            This boxplot visualizes how total rainfall varies across Australian states and territories over the past 36 months. The height of each box and the length of the whiskers reflect rainfall variability.
+          </div>
+        </div>
 
-          <div class="pure-u-1-2">
+        <div class="pure-g" style="gap: 20px; margin-bottom: 30px;">
+          <div class="pure-u-1">
             <div class="content-text">
               <p>
                 States such as and the <strong>NT</strong> show the widest interquartile ranges and extreme outliers, indicating high unpredictability. Conversely, <strong>VIC</strong> and <strong>SA</strong> exhibit more clustered distributions, suggesting more consistent rainfall patterns.
@@ -348,18 +347,18 @@
         <!-- Section 3: Rainfall-Yield Correlation Analysis -->
         <h2 class="section-title">Impact of Rainfall on Yield: More Water Equals More Grain?</h2>
         
-        <div class="pure-g" style="gap: 20px; margin-bottom: 30px;">
-          <div class="pure-u-1-2">
-            <div class="figure-container">
-              <div id="scatter" class="viz"></div>
-              <div class="figure-caption">
-                X = mean annual rainfall (mm), Y = cereal yield (kg/ha).<br>
-                Data: World Bank WDI (CC BY 4.0).
-              </div>
-            </div>
+        <div class="figure-container" style="margin-bottom: 30px;">
+          <div class="viz">
+            <div id="scatter"></div>
           </div>
+          <div class="figure-caption">
+            X = mean annual rainfall (mm), Y = cereal yield (kg/ha).<br>
+            Data: World Bank WDI (CC BY 4.0).
+          </div>
+        </div>
 
-          <div class="pure-u-1-2">
+        <div class="pure-g" style="gap: 20px; margin-bottom: 30px;">
+          <div class="pure-u-1">
             <div class="content-text">
               <p>
                 This scatterplot explores the relationship between <strong>mean annual rainfall</strong> and 
@@ -385,14 +384,14 @@
         <!-- Section 4: Temporal Trend Analysis -->
         <h2 class="section-title">Time-Series Trends With Agricultural Indicators</h2>
         
-        <div class="pure-g" style="gap: 20px; margin-bottom: 30px;">
-          <div class="pure-u-1-2">
-            <div class="figure-container">
-              <div id="linechart" class="viz"></div>
-            </div>
+        <div class="figure-container" style="margin-bottom: 30px;">
+          <div class="viz">
+            <div id="linechart"></div>
           </div>
+        </div>
 
-          <div class="pure-u-1-2">
+        <div class="pure-g" style="gap: 20px; margin-bottom: 30px;">
+          <div class="pure-u-1">
             <div class="content-text">
               <p>
                 This line chart compares <strong>Australia's Food Access Index</strong> and <strong>Crop Output Index</strong>
@@ -423,14 +422,14 @@
         <!-- Section 5: Production-Area Relationship Analysis -->
         <h2 class="section-title">The Relationship Between Yield and Area</h2>
         
-        <div class="pure-g" style="gap: 20px; margin-bottom: 40px;">
-          <div class="pure-u-1-2">
-            <div class="figure-container">
-              <div id="linebar" class="viz"></div>
-            </div>
+        <div class="figure-container" style="margin-bottom: 30px;">
+          <div class="viz">
+            <div id="linebar"></div>
           </div>
+        </div>
 
-          <div class="pure-u-1-2">
+        <div class="pure-g" style="gap: 20px; margin-bottom: 40px;">
+          <div class="pure-u-1">
             <div class="content-text">
               <p>
                 This chart compares Australia's <strong>cereal production</strong> (in tonnes) with the <strong>total area used for cereal crops</strong> (in hectares) from 2014 to 2023.
@@ -443,6 +442,70 @@
               </p>
               <p>
                 These variations suggest that while land availability is a steady resource, Australia's cereal production remains vulnerable to <strong>climate shocks and supply chain pressures</strong>. Policymakers and farmers must plan for this variability to maintain food security and export reliability.
+              </p>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Section 6: Rainfall Anomaly Analysis -->
+        <h2 class="section-title">Climate Variability: Regional Rainfall Deviations</h2>
+        
+        <div class="figure-container" style="margin-bottom: 30px;">
+          <div class="viz">
+            <div id="rainfall_anomaly"></div>
+          </div>
+          <div class="figure-caption">
+            This chart compares average rainfall deviation by state/territory over the past 36 months. Negative values indicate below-average rainfall (drought conditions), while positive values indicate above-average rainfall. Click on the legend to filter specific regions.
+          </div>
+        </div>
+
+        <div class="pure-g" style="gap: 20px; margin-bottom: 30px;">
+          <div class="pure-u-1">
+            <div class="content-text">
+              <p>
+                This visualization reveals <strong>extreme spatial heterogeneity</strong> in Australia's climate patterns. Rainfall deviations range from -20% (severe drought) to +15% (above average), demonstrating that different regions are experiencing vastly different climatic conditions. This <strong>polarization</strong> is a critical signal of intensifying climate variability.
+              </p>
+              <p>
+                <strong>Western Australia (WA)</strong> and <strong>South Australia (SA)</strong> show significant negative deviations, with rainfall 15-20% below historical averages. These regions face severe challenges for dryland agriculture that depends on natural precipitation. In contrast, parts of <strong>Queensland (QLD)</strong> and <strong>New South Wales (NSW)</strong> have experienced above-average rainfall.
+              </p>
+              <p>
+                The varying rainfall patterns across states highlight the need for <strong>region-specific agricultural adaptation strategies</strong>. Areas experiencing persistent drought may need to shift crop selections toward drought-resistant varieties or invest in irrigation infrastructure. Regions with excess rainfall must manage risks of flooding and soil erosion.
+              </p>
+              <p>
+                Understanding these regional disparities is essential for policymakers and farmers to develop <strong>climate-resilient agricultural systems</strong> that can maintain productivity despite increasing environmental variability.
+              </p>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Section 7: Multi-Indicator Time Series -->
+        <h2 class="section-title">Multi-Dimensional Agricultural Indicators Evolution</h2>
+        
+        <div class="figure-container" style="margin-bottom: 30px;">
+          <div class="viz">
+            <div id="multiline"></div>
+          </div>
+          <div class="figure-caption">
+            This interactive time series displays five key agricultural indicators for Australia from 2014-2023. Click on the legend to selectively view specific indicators. Use the slider to adjust the starting year. All indicators have been normalized for comparison.
+          </div>
+        </div>
+
+        <div class="pure-g" style="gap: 20px; margin-bottom: 40px;">
+          <div class="pure-u-1">
+            <div class="content-text">
+              <p>
+                This chart comprehensively displays the <strong>multi-dimensional evolution</strong> of Australia's agricultural system. Notably, <strong>cereal cultivation area</strong> has remained relatively stable over the past decade (around 18-22 million hectares), yet <strong>cereal production</strong> has experienced dramatic fluctuations, reinforcing the significant impact of climatic factors on output.
+              </p>
+              <p>
+                <strong>Cereal yield</strong> (per hectare production) fluctuations closely align with total production, peaking in 2017 and 2021-2022, while declining significantly in 2019-2020. This indicates that production changes are primarily driven by <strong>per-unit-area efficiency</strong> rather than planting scale.
+              </p>
+              <p>
+                The trends in <strong>Crop Production Index</strong> and <strong>Food Access Index</strong> reveal the complete chain from production to consumption. The rapid recovery of the Crop Production Index after 2020 (exceeding 120) demonstrates agricultural system resilience, but the relative lag in the Food Access Index reminds us that <strong>productivity gains do not automatically translate to food security</strong>—distribution and accessibility are equally important.
+              </p>
+              <p>
+                Through interactive exploration of different indicators, we can identify <strong>vulnerable elements</strong> and <strong>strength areas</strong> in the agricultural system, providing data support for more precise agricultural policy formulation.
               </p>
             </div>
           </div>
@@ -467,12 +530,16 @@
     const BOX_SPEC_URL = "box rainfall in au.json";
     const LINECHART_SPEC_URL = "linechart.json";
     const LINEBAR_SPEC_URL = "line and bar.json";
+    const RAINFALL_ANOMALY_SPEC_URL = "rainfall-anomaly-bar.json";
+    const MULTILINE_SPEC_URL = "multi-indicator-timeseries.json";
 
     vegaEmbed("#map", MAP_SPEC_URL, { actions: false });
     vegaEmbed("#scatter", SCATTER_SPEC_URL, { actions: false });
     vegaEmbed("#box", BOX_SPEC_URL, { actions: false });
     vegaEmbed("#linechart", LINECHART_SPEC_URL, { actions: false });
     vegaEmbed("#linebar", LINEBAR_SPEC_URL, { actions: false });
+    vegaEmbed("#rainfall_anomaly", RAINFALL_ANOMALY_SPEC_URL, { actions: false });
+    vegaEmbed("#multiline", MULTILINE_SPEC_URL, { actions: false });
   </script>
 </body>
 </html>
