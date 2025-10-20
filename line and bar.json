@@ -1,186 +1,113 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Cereal Production vs Cereal Area in Australia (2014–2023)",
+  "width": 900,
+  "height": 400,
   "title": {
-    "text": "Australia: Cereal Production vs Cereal Area (2014–2023)",
+    "text": "Australia: Cereal Production vs Cultivation Area (2014–2023)",
     "font": "Garamond",
-    "fontSize": 18,
+    "fontSize": 20,
     "fontWeight": "bold",
     "anchor": "middle",
-    "color": "black"
+    "color": "#1e3c72"
   },
-  "width": 650,
-  "height": 400,
   "data": {
     "url": "https://raw.githubusercontent.com/ywuu0346-bot/new-A2/main/data/dv2data%20by%20country.csv"
   },
   "transform": [
     { "filter": "datum['Country Name'] === 'Australia'" },
-    { "filter": "datum.Year <= 2023" },
-    {
-      "fold": ["cereal_production_t", "cereal_area_ha"],
-      "as": ["Type", "Value"]
-    }
+    { "filter": "datum.Year <= 2023" }
   ],
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "ordinal",
+      "title": "Year",
+      "axis": {
+        "labelFont": "Garamond",
+        "labelFontSize": 13,
+        "labelColor": "#333",
+        "labelAngle": 0,
+        "titleFont": "Garamond",
+        "titleFontSize": 15,
+        "titleFontWeight": "bold",
+        "titleColor": "#1e3c72"
+      }
+    }
+  },
   "layer": [
     {
-      "transform": [{ "filter": "datum.Type === 'cereal_area_ha'" }],
       "mark": {
         "type": "bar",
-        "opacity": 0.8
+        "opacity": 0.7,
+        "cornerRadiusTopLeft": 3,
+        "cornerRadiusTopRight": 3
       },
       "encoding": {
-        "x": {
-          "field": "Year",
-          "type": "ordinal",
-          "scale": {
-            "bandPaddingInner": 0.3,
-            "bandPaddingOuter": 0.1
-          },
-          "title": "Year",
-          "axis": {
-            "labelFont": "Garamond",
-            "labelAngle": 0
-          }
-        },
         "y": {
-          "field": "Value",
+          "field": "cereal_area_ha",
           "type": "quantitative",
-          "title": "Cereal Area (hectares)",
+          "title": "Cereal Cultivation Area (hectares)",
           "axis": {
             "orient": "left",
-            "titleColor": "black",
-            "labelFont": "Garamond"
+            "titleColor": "#f39c12",
+            "labelFont": "Garamond",
+            "labelFontSize": 12,
+            "labelColor": "#f39c12"
           }
         },
         "color": {
-          "field": "Type",
-          "type": "nominal",
-          "scale": {
-            "domain": ["cereal_production_t", "cereal_area_ha"],
-            "range": ["teal", "#dd9349"]
-          },
-          "legend": {
-            "title": "Indicator",
-            "labelExpr": "datum.label === 'cereal_production_t' ? 'Cereal Production' : 'Cereal Area'",
-            "orient": "right"
-          }
+          "value": "#f39c12"
         },
         "tooltip": [
-          { "field": "Year", "type": "ordinal" },
-          { "field": "Value", "title": "Area (ha)", "format": ",.0f" }
+          { "field": "Year", "type": "ordinal", "title": "Year" },
+          { "field": "cereal_area_ha", "type": "quantitative", "title": "Area (ha)", "format": ",.0f" }
         ]
       }
     },
     {
-      "transform": [{ "filter": "datum.Type === 'cereal_production_t'" }],
       "mark": {
         "type": "line",
-        "strokeWidth": 2,
+        "strokeWidth": 4,
         "point": {
           "filled": true,
-          "size": 50
+          "size": 120
         }
       },
       "encoding": {
-        "x": {
-          "field": "Year",
-          "type": "ordinal",
-          "axis": { "labelAngle": 0 }
-        },
         "y": {
-          "field": "Value",
+          "field": "cereal_production_t",
           "type": "quantitative",
           "title": "Cereal Production (tonnes)",
           "axis": {
-            "titleColor": "teal",
-            "labelFont": "Garamond"
+            "orient": "right",
+            "titleColor": "#2bbc74",
+            "labelFont": "Garamond",
+            "labelFontSize": 12,
+            "labelColor": "#2bbc74"
           }
         },
         "color": {
-          "field": "Type",
-          "type": "nominal",
-          "scale": {
-            "domain": ["cereal_production_t", "cereal_area_ha"],
-            "range": ["teal", "#dd9349"]
-          },
-          "legend": {
-            "title": "Indicator",
-            "labelExpr": "datum.label === 'cereal_production_t' ? 'Cereal Production' : 'Cereal Area'",
-            "orient": "right"
-          }
+          "value": "#2bbc74"
         },
         "tooltip": [
-          { "field": "Year", "type": "ordinal" },
-          { "field": "Value", "title": "Production (t)", "format": ",.0f" }
+          { "field": "Year", "type": "ordinal", "title": "Year" },
+          { "field": "cereal_production_t", "type": "quantitative", "title": "Production (t)", "format": ",.0f" }
         ]
-      }
-    },
-    {
-      "transform": [
-        {
-          "filter": "(datum.Type === 'cereal_production_t') && (datum.Year == 2017)"
-        }
-      ],
-      "mark": {
-        "type": "text",
-        "align": "left",
-        "dx": -23,
-        "dy": -10,
-        "font": "Garamond",
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "fill": "black"
-      },
-      "encoding": {
-        "x": { "field": "Year", "type": "ordinal" },
-        "y": { "field": "Value", "type": "quantitative" },
-        "text": {
-          "field": "Value",
-          "type": "quantitative",
-          "format": ",.0f"
-        }
-      }
-    },
-    {
-      "transform": [
-        {
-          "filter": "(datum.Type === 'cereal_production_t') && (datum.Year == 2020)"
-        }
-      ],
-      "mark": {
-        "type": "text",
-        "align": "left",
-        "dx": -23,
-        "dy": 15,
-        "font": "Garamond",
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "fill": "black"
-      },
-      "encoding": {
-        "x": { "field": "Year", "type": "ordinal" },
-        "y": { "field": "Value", "type": "quantitative" },
-        "text": {
-          "field": "Value",
-          "type": "quantitative",
-          "format": ",.0f"
-        }
       }
     }
   ],
+  "resolve": {
+    "scale": {
+      "y": "independent"
+    }
+  },
   "config": {
+    "font": "Garamond",
     "axis": {
-      "labelFont": "Garamond",
-      "titleFont": "Garamond",
-      "titleFontSize": 14
+      "grid": false
     },
-    "legend": {
-      "labelFont": "Garamond",
-      "labelFontSize": 13,
-      "titleFont": "Garamond",
-      "titleFontWeight": "bold",
-      "titleFontSize": 14
+    "view": {
+      "stroke": "transparent"
     }
   }
 }

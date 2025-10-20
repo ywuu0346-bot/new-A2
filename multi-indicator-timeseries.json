@@ -11,47 +11,28 @@
     "color": "black"
   },
   "data": {
-    "url": "dv2databycountry.csv"
+    "url": "https://raw.githubusercontent.com/ywuu0346-bot/new-A2/main/data/dv2data%20by%20country.csv"
   },
   "params": [
     {
       "name": "indicatorSelect",
-      "select": {
-        "type": "point",
-        "fields": ["indicator_en"]
-      },
+      "select": {"type": "point", "fields": ["indicator_en"]},
       "bind": "legend"
     },
     {
       "name": "yearStart",
       "value": 2014,
-      "bind": {
-        "input": "range",
-        "min": 2014,
-        "max": 2022,
-        "step": 1,
-        "name": "Start Year: "
-      }
+      "bind": {"input": "range", "min": 2014, "max": 2022, "step": 1, "name": "Start Year: "}
     },
     {
       "name": "yearEnd",
       "value": 2022,
-      "bind": {
-        "input": "range",
-        "min": 2014,
-        "max": 2022,
-        "step": 1,
-        "name": "End Year: "
-      }
+      "bind": {"input": "range", "min": 2014, "max": 2022, "step": 1, "name": "End Year: "}
     }
   ],
   "transform": [
-    {
-      "filter": "datum['Country Name'] == 'Australia'"
-    },
-    {
-      "filter": "datum.Year >= yearStart && datum.Year <= yearEnd"
-    },
+    {"filter": "datum['Country Name'] == 'Australia'"},
+    {"filter": "datum.Year >= yearStart && datum.Year <= yearEnd"},
     {
       "fold": [
         "cereal_production_t",
@@ -62,11 +43,9 @@
       ],
       "as": ["indicator", "raw_value"]
     },
+    {"filter": "isValid(datum.raw_value) && datum.raw_value != null"},
     {
-      "filter": "isValid(datum.raw_value) && datum.raw_value != null"
-    },
-    {
-      "calculate": "datum.indicator == 'cereal_production_t' ? datum.raw_value / 1000000 : datum.indicator == 'cereal_area_ha' ? datum.raw_value / 1000000 : datum.indicator == 'cereal_yield_kgph' ? datum.raw_value / 100 : datum.raw_value",
+      "calculate": "datum.indicator == 'cereal_production_t' ? datum.raw_value/1000000 : datum.indicator == 'cereal_area_ha' ? datum.raw_value/1000000 : datum.indicator == 'cereal_yield_kgph' ? datum.raw_value/100 : datum.raw_value",
       "as": "value"
     },
     {
@@ -76,10 +55,7 @@
   ],
   "mark": {
     "type": "area",
-    "line": {
-      "strokeWidth": 0.5,
-      "color": "white"
-    },
+    "line": {"strokeWidth": 0.5, "color": "white"},
     "interpolate": "monotone"
   },
   "encoding": {
@@ -103,7 +79,7 @@
     "y": {
       "field": "value",
       "type": "quantitative",
-      "title": "Indicator Value (Normalized)",
+      "title": "Indicator Value (scaled)",
       "stack": "center",
       "axis": {
         "labelFont": "Garamond",
@@ -118,36 +94,36 @@
         "ticks": false
       }
     },
-    "color": {
-      "field": "indicator_en",
-      "type": "nominal",
-      "title": "Agricultural Indicators",
-      "scale": {
-        "domain": [
-          "Cereal Production (M tonnes)",
-          "Cultivation Area (M hectares)",
-          "Cereal Yield (100 kg/ha)",
-          "Crop Production Index",
-          "Food Access Index"
-        ],
-        "range": ["#ff9a76", "#ff7979", "#ff5252", "#ff3838", "#d63031"]
-      },
-      "legend": {
-        "labelFont": "Garamond",
-        "labelFontSize": 12,
-        "titleFont": "Garamond",
-        "titleFontSize": 13,
-        "titleFontWeight": "bold",
-        "orient": "right",
-        "offset": 10
-      }
-    },
+"color": {
+  "field": "indicator_en",
+  "type": "nominal",
+  "title": "Agricultural Indicators",
+  "scale": {
+    "domain": [
+      "Cultivation Area (M hectares)",
+      "Cereal Production (M tonnes)",
+      "Cereal Yield (100 kg/ha)",
+      "Crop Production Index",
+      "Food Access Index"
+    ],
+    "range": [
+     "#f39c12", "#2bbc74", "#d6b4f1", "#3498db", "#e74c3c"
+    ]
+  },
+  "legend": {
+    "labelFont": "Garamond",
+    "labelFontSize": 12,
+    "titleFont": "Garamond",
+    "titleFontSize": 13,
+    "titleFontWeight": "bold",
+    "orient": "right",
+    "offset": 10
+  }
+},
+    
     "opacity": {
-      "condition": {
-        "param": "indicatorSelect",
-        "value": 0.9
-      },
-      "value": 0.3
+      "condition": {"param": "indicatorSelect", "value": 0.9},
+      "value": 0.35
     },
     "tooltip": [
       {"field": "Year", "type": "ordinal", "title": "Year"},
@@ -157,11 +133,7 @@
   },
   "config": {
     "font": "Garamond",
-    "axis": {
-      "grid": false
-    },
-    "view": {
-      "stroke": "transparent"
-    }
+    "axis": {"grid": false},
+    "view": {"stroke": "transparent"}
   }
 }

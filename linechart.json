@@ -1,33 +1,48 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Food vs Crop Index in Australia (2014–2022)",
+  "width": 860,
+  "height": 400,
   "title": {
-    "text": "Australia: Food Access vs Crop Output Index (2014–2022)",
+    "text": "Australia's Food and Crop Production Indices (2014-2022)",
     "font": "Garamond",
     "fontSize": 18,
     "fontWeight": "bold",
     "anchor": "middle",
     "color": "black"
   },
-  "width": 600,
-  "height": 400,
   "data": {
-    "url": "https://raw.githubusercontent.com/ywuu0346-bot/new-A2/main/data/dv2data%20by%20country.csv"
+    "url": "https://raw.githubusercontent.com/ywuu0346-bot/new-A2/main/data/dv2data%20by%20country.csv",
+    "format": {
+      "type": "csv",
+      "parse": { "Year": "number", "food_index": "number", "crop_index": "number" }
+    }
   },
   "transform": [
     { "filter": "datum['Country Name'] === 'Australia'" },
-    { "filter": "datum.Year < 2023" },
-    {
-      "fold": ["food_index", "crop_index"],
-      "as": ["Index Type", "Index Value"]
-    }
+    { "filter": "datum.Year >= 2014 && datum.Year <= 2022" },
+    { "fold": ["food_index", "crop_index"], "as": ["Index", "Index Value"] }
   ],
   "layer": [
     {
+      "mark": { "type": "rule", "strokeDash": [8, 4], "strokeWidth": 1, "color": "#bdc3c7", "opacity": 0.5 },
+      "encoding": { "y": { "datum": 100 } }
+    },
+    {
       "mark": {
-        "type": "line",
-        "point": { "filled": true, "size": 50 }
+        "type": "text",
+        "align": "right",
+        "dx": -5,
+        "dy": -8,
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "font": "Garamond",
+        "color": "#95a5a6"
       },
+      "encoding": { "text": { "value": "Baseline (100)" }, "x": { "value": 850 }, "y": { "datum": 100 } }
+    },
+
+    {
+      "mark": { "type": "line", "strokeWidth": 4, "tension": 0.8 },
       "encoding": {
         "x": {
           "field": "Year",
@@ -35,86 +50,138 @@
           "title": "Year",
           "axis": {
             "labelFont": "Garamond",
-            "labelFontSize": 12,
+            "labelFontSize": 13,
             "labelColor": "#333",
+            "labelAngle": 0,
             "titleFont": "Garamond",
-            "titleFontSize": 13,
+            "titleFontSize": 14,
             "titleFontWeight": "bold",
-            "titleColor": "#333"
+            "titleColor": "#222",
+            "domain": false,
+            "ticks": false
           }
         },
         "y": {
           "field": "Index Value",
           "type": "quantitative",
           "title": "Index Value",
+          "scale": { "domain": [70, 150] },
           "axis": {
-            "labelFont": "Garamond",
-            "labelFontSize": 12,
-            "labelColor": "#333",
-            "titleFont": "Garamond",
-            "titleFontSize": 13,
-            "titleFontWeight": "bold",
-            "titleColor": "#333"
-          }
-        },
-        "color": {
-          "field": "Index Type",
-          "type": "nominal",
-          "title": "Index Type",
-          "scale": {
-            "domain": ["food_index", "crop_index"],
-            "range": ["brown", "orange"]
-          },
-          "legend": {
-            "labelExpr": "datum.label === 'food_index' ? 'Food Index' : 'Crop Index'",
             "labelFont": "Garamond",
             "labelFontSize": 13,
             "labelColor": "#333",
             "titleFont": "Garamond",
             "titleFontSize": 14,
             "titleFontWeight": "bold",
-            "titleColor": "#222"
+            "titleColor": "#222",
+            "format": ".0f",
+            "domain": false,
+            "ticks": false
+          }
+        },
+        "color": {
+          "field": "Index",
+          "type": "nominal",
+          "scale": {
+            "domain": ["food_index", "crop_index"],
+            "range": ["#e74c3c", "#3498db"]
+          },
+          "legend": {
+            "title": "Index Type",
+            "labelExpr": "datum.label === 'food_index' ? 'Food Access Index' : 'Crop Production Index'",
+            "labelFont": "Garamond",
+            "labelFontSize": 13,
+            "titleFont": "Garamond",
+            "titleFontSize": 14,
+            "titleFontWeight": "bold",
+            "orient": "right",
+            "offset": 10,
+            "symbolSize": 200,
+            "symbolStrokeWidth": 3,
+            "symbolType": "stroke"
           }
         },
         "tooltip": [
-          { "field": "Year", "type": "ordinal" },
-          { "field": "Index Type", "type": "nominal", "title": "Type" },
-          {
-            "field": "Index Value",
-            "type": "quantitative",
-            "format": ".2f",
-            "title": "Value"
-          }
+          { "field": "Year", "type": "ordinal", "title": "Year" },
+          { "field": "Index", "type": "nominal", "title": "Index" },
+          { "field": "Index Value", "type": "quantitative", "title": "Value", "format": ".2f" }
         ]
       }
     },
     {
-      "data": {
-        "values": [
-          {
-            "Year": "2020",
-            "Index Value": 90,
-            "text": "COVID-19 impact"
-          }
+      "mark": { "type": "point", "filled": true, "size": 150, "stroke": "white", "strokeWidth": 2.5 },
+      "encoding": {
+        "x": { "field": "Year", "type": "ordinal" },
+        "y": { "field": "Index Value", "type": "quantitative" },
+        "color": {
+          "field": "Index",
+          "type": "nominal",
+          "scale": {
+            "domain": ["food_index", "crop_index"],
+            "range": ["#e74c3c", "#3498db"]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          { "field": "Year", "type": "ordinal", "title": "Year" },
+          { "field": "Index", "type": "nominal", "title": "Index" },
+          { "field": "Index Value", "type": "quantitative", "title": "Value", "format": ".2f" }
         ]
-      },
+      }
+    },
+
+    {
+      "transform": [
+        { "filter": "datum.Index == 'crop_index' && datum.Year == 2017" },
+        { "calculate": "format(datum['Index Value'], '.2f')", "as": "label2017" }
+      ],
       "mark": {
         "type": "text",
-        "dy": -25,
-        "dx": -35,
-        "fontSize": 14,
+        "zindex": 999,
         "font": "Garamond",
-        "fontWeight": "lighter",
-        "color": "#666"
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#3498db",
+        "dx": -14,
+        "dy": -12,
+        "align": "left",
+        "baseline": "bottom"
       },
       "encoding": {
         "x": { "field": "Year", "type": "ordinal" },
         "y": { "field": "Index Value", "type": "quantitative" },
-        "text": { "field": "text", "type": "nominal" }
+        "text": { "field": "label2017" }
+      }
+    },
+
+
+    {
+      "transform": [
+        { "filter": "datum.Index == 'crop_index' && datum.Year == 2020" },
+        { "calculate": "format(datum['Index Value'], '.2f')", "as": "label2020" }
+      ],
+      "mark": {
+        "type": "text",
+        "zindex": 999,
+        "font": "Garamond",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#3498db",
+        "dx": 13,
+        "dy": 14,
+        "align": "right",
+        "baseline": "top"
+      },
+      "encoding": {
+        "x": { "field": "Year", "type": "ordinal" },
+        "y": { "field": "Index Value", "type": "quantitative" },
+        "text": { "field": "label2020" }
       }
     }
   ],
   "config": {
-    "font": "Garamond"
+    "font": "Garamond",
+    "axis": { "grid": false },
+    "view": { "stroke": "transparent" }
   }
 }
