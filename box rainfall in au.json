@@ -1,14 +1,14 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 760,
-  "height": 320,
+  "width": 900,
+  "height": 380,
   "title": {
-    "text": "Distribution of station rainfall by state (36 months)",
+    "text": "Distribution of Station Rainfall by State (36 months)",
     "font": "Garamond",
-    "fontSize": 18,
+    "fontSize": 20,
     "fontWeight": "bold",
     "anchor": "middle",
-    "color": "black"
+    "color": "#1e3c72"
   },
   "data": {
     "url": "https://raw.githubusercontent.com/ywuu0346-bot/new-A2/refs/heads/main/data/rainfall.2025-08-31.36month.aus.csv"
@@ -18,7 +18,8 @@
   ],
   "mark": {
     "type": "boxplot",
-    "extent": "min-max"
+    "extent": "min-max",
+    "size": 60
   },
   "encoding": {
     "x": {
@@ -28,38 +29,55 @@
       "sort": "-y",
       "axis": {
         "labelFont": "Garamond",
-        "labelFontSize": 12,
+        "labelFontSize": 14,
         "labelColor": "#333",
         "labelAngle": 0,
         "titleFont": "Garamond",
-        "titleFontSize": 13,
+        "titleFontSize": 15,
         "titleFontWeight": "bold",
-        "titleColor": "#333"
+        "titleColor": "#1e3c72"
       }
     },
     "y": {
       "field": "Rainfall (mm)",
       "type": "quantitative",
-      "title": "Total rainfall (mm)",
+      "title": "Total Rainfall (mm)",
+      "scale": {
+        "zero": false
+      },
       "axis": {
         "format": ",.0f",
         "labelFont": "Garamond",
-        "labelFontSize": 12,
+        "labelFontSize": 13,
         "labelColor": "#333",
         "titleFont": "Garamond",
-        "titleFontSize": 13,
+        "titleFontSize": 15,
         "titleFontWeight": "bold",
-        "titleColor": "#333"
+        "titleColor": "#1e3c72"
       }
     },
     "color": {
-      "value": "#90caf9"
+      "field": "Region",
+      "type": "nominal",
+      "scale": {
+        "domain": ["NSW", "VIC", "QLD", "SA", "WA", "TAS", "NT", "ACT"],
+        "range": ["#fffac0", "#1e3c72", "#567dc5", "#ba6700", "#9b59b6", "#a84343", "#f39c12", "#95a5a6"]
+      },
+      "legend": null
     }
   },
   "config": {
     "boxplot": {
-      "median": { "color": "#1f4d7a" }
+      "median": { "color": "#1e3c72", "strokeWidth": 3 },
+      "box": { "strokeWidth": 1.5 },
+      "outliers": { "size": 40, "opacity": 0.6 }
     },
-    "font": "Garamond"
+    "font": "Garamond",
+    "axis": {
+      "grid": false
+    },
+    "view": {
+      "stroke": "transparent"
+    }
   }
 }

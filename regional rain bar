@@ -1,0 +1,134 @@
+ {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 400,
+  "title": {
+    "text": "Regional Rainfall Deviations from Historical Average (36 months)",
+    "font": "Garamond",
+    "fontSize": 20,
+    "fontWeight": "bold",
+    "anchor": "middle",
+    "color": "#1e3c72"
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/ywuu0346-bot/new-A2/refs/heads/main/data/rainfall.2025-08-31.36month.aus.csv"
+  },
+  "transform": [
+    {
+      "filter": "isValid(datum['Rainfall (mm)']) && isValid(datum.Mean)"
+    },
+    {
+      "calculate": "((datum['Rainfall (mm)'] - datum.Mean) / datum.Mean) * 100",
+      "as": "deviation_pct"
+    },
+    {
+      "aggregate": [
+        {"op": "mean", "field": "deviation_pct", "as": "avg_deviation"}
+      ],
+      "groupby": ["Region"]
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadiusTopLeft": 4,
+        "cornerRadiusTopRight": 4
+      },
+      "encoding": {
+        "x": {
+          "field": "Region",
+          "type": "nominal",
+          "title": "State / Territory",
+          "sort": {"field": "avg_deviation", "order": "descending"},
+          "axis": {
+            "labelFont": "Garamond",
+            "labelFontSize": 14,
+            "labelColor": "#333",
+            "labelAngle": 0,
+            "titleFont": "Garamond",
+            "titleFontSize": 15,
+            "titleFontWeight": "bold",
+            "titleColor": "#1e3c72",
+            "grid": false
+          }
+        },
+        "y": {
+          "field": "avg_deviation",
+          "type": "quantitative",
+          "title": "Average Rainfall Deviation (%)",
+          "axis": {
+            "labelFont": "Garamond",
+            "labelFontSize": 13,
+            "labelColor": "#333",
+            "titleFont": "Garamond",
+            "titleFontSize": 15,
+            "titleFontWeight": "bold",
+            "titleColor": "#72671e",
+            "grid": false,
+            "format": "+.1f"
+          }
+        },
+        "color": {
+          "field": "Region",
+          "type": "nominal",
+          "scale": {
+            "domain": ["NSW", "VIC", "QLD", "SA", "WA", "TAS", "NT", "ACT"],
+            "range": ["#ffec6e", "#1e3c72", "#567dc5", "#ba6700", "#9b59b6", "#a84343", "#f39c12", "#95a5a6"]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {"field": "Region", "type": "nominal", "title": "Region"},
+          {"field": "avg_deviation", "type": "quantitative", "title": "Deviation (%)", "format": "+.2f"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#34495e",
+        "strokeWidth": 2,
+        "strokeDash": [5, 5]
+      },
+      "encoding": {
+        "y": {"datum": 0}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "dy": -10,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "font": "Garamond"
+      },
+      "encoding": {
+        "x": {"field": "Region", "type": "nominal"},
+        "y": {"field": "avg_deviation", "type": "quantitative"},
+        "text": {"field": "avg_deviation", "type": "quantitative", "format": "+.1f"},
+        "color": {
+          "field": "Region",
+          "type": "nominal",
+          "scale": {
+            "domain": ["NSW", "VIC", "QLD", "SA", "WA", "TAS", "NT", "ACT"],
+            "range": ["#e74c3c", "#3498db", "#e84393", "#f39c12", "#9b59b6", "#1abc9c", "#2c3e50", "#95a5a6"]
+          },
+          "legend": null
+        }
+      }
+    }
+  ],
+  "config": {
+    "font": "Garamond",
+    "view": {
+      "stroke": "transparent"
+    },
+    "axis": {
+      "grid": false
+    }
+  }
+}
+
