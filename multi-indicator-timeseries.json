@@ -1,0 +1,167 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 400,
+  "title": {
+    "text": "Australia's Agricultural Multi-Indicator Time Series (2014-2022)",
+    "font": "Garamond",
+    "fontSize": 18,
+    "fontWeight": "bold",
+    "anchor": "middle",
+    "color": "black"
+  },
+  "data": {
+    "url": "dv2databycountry.csv"
+  },
+  "params": [
+    {
+      "name": "indicatorSelect",
+      "select": {
+        "type": "point",
+        "fields": ["indicator_en"]
+      },
+      "bind": "legend"
+    },
+    {
+      "name": "yearStart",
+      "value": 2014,
+      "bind": {
+        "input": "range",
+        "min": 2014,
+        "max": 2022,
+        "step": 1,
+        "name": "Start Year: "
+      }
+    },
+    {
+      "name": "yearEnd",
+      "value": 2022,
+      "bind": {
+        "input": "range",
+        "min": 2014,
+        "max": 2022,
+        "step": 1,
+        "name": "End Year: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "datum['Country Name'] == 'Australia'"
+    },
+    {
+      "filter": "datum.Year >= yearStart && datum.Year <= yearEnd"
+    },
+    {
+      "fold": [
+        "cereal_production_t",
+        "cereal_area_ha",
+        "cereal_yield_kgph",
+        "crop_index",
+        "food_index"
+      ],
+      "as": ["indicator", "raw_value"]
+    },
+    {
+      "filter": "isValid(datum.raw_value) && datum.raw_value != null"
+    },
+    {
+      "calculate": "datum.indicator == 'cereal_production_t' ? datum.raw_value / 1000000 : datum.indicator == 'cereal_area_ha' ? datum.raw_value / 1000000 : datum.indicator == 'cereal_yield_kgph' ? datum.raw_value / 100 : datum.raw_value",
+      "as": "value"
+    },
+    {
+      "calculate": "datum.indicator == 'cereal_production_t' ? 'Cereal Production (M tonnes)' : datum.indicator == 'cereal_area_ha' ? 'Cultivation Area (M hectares)' : datum.indicator == 'cereal_yield_kgph' ? 'Cereal Yield (100 kg/ha)' : datum.indicator == 'crop_index' ? 'Crop Production Index' : 'Food Access Index'",
+      "as": "indicator_en"
+    }
+  ],
+  "mark": {
+    "type": "area",
+    "line": {
+      "strokeWidth": 0.5,
+      "color": "white"
+    },
+    "interpolate": "monotone"
+  },
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "ordinal",
+      "title": "Year",
+      "axis": {
+        "labelFont": "Garamond",
+        "labelFontSize": 13,
+        "labelColor": "#333",
+        "labelAngle": 0,
+        "titleFont": "Garamond",
+        "titleFontSize": 14,
+        "titleFontWeight": "bold",
+        "titleColor": "#222",
+        "domain": false,
+        "ticks": false
+      }
+    },
+    "y": {
+      "field": "value",
+      "type": "quantitative",
+      "title": "Indicator Value (Normalized)",
+      "stack": "center",
+      "axis": {
+        "labelFont": "Garamond",
+        "labelFontSize": 12,
+        "labelColor": "#333",
+        "titleFont": "Garamond",
+        "titleFontSize": 14,
+        "titleFontWeight": "bold",
+        "titleColor": "#222",
+        "format": ".0f",
+        "domain": false,
+        "ticks": false
+      }
+    },
+    "color": {
+      "field": "indicator_en",
+      "type": "nominal",
+      "title": "Agricultural Indicators",
+      "scale": {
+        "domain": [
+          "Cereal Production (M tonnes)",
+          "Cultivation Area (M hectares)",
+          "Cereal Yield (100 kg/ha)",
+          "Crop Production Index",
+          "Food Access Index"
+        ],
+        "range": ["#ff9a76", "#ff7979", "#ff5252", "#ff3838", "#d63031"]
+      },
+      "legend": {
+        "labelFont": "Garamond",
+        "labelFontSize": 12,
+        "titleFont": "Garamond",
+        "titleFontSize": 13,
+        "titleFontWeight": "bold",
+        "orient": "right",
+        "offset": 10
+      }
+    },
+    "opacity": {
+      "condition": {
+        "param": "indicatorSelect",
+        "value": 0.9
+      },
+      "value": 0.3
+    },
+    "tooltip": [
+      {"field": "Year", "type": "ordinal", "title": "Year"},
+      {"field": "indicator_en", "type": "nominal", "title": "Indicator"},
+      {"field": "value", "type": "quantitative", "title": "Value", "format": ".2f"}
+    ]
+  },
+  "config": {
+    "font": "Garamond",
+    "axis": {
+      "grid": false
+    },
+    "view": {
+      "stroke": "transparent"
+    }
+  }
+}

@@ -61,7 +61,7 @@
       "type": "nominal",
       "scale": {
         "domain": ["NSW", "VIC", "QLD", "SA", "WA", "TAS", "NT", "ACT"],
-        "range": ["#fffac0", "#1e3c72", "#567dc5", "#ba6700", "#9b59b6", "#a84343", "#f39c12", "#95a5a6"]
+        "range": ["#eae04b", "#1e3c72", "#567dc5", "#ba6700", "#9b59b6", "#a84343", "#f39c12", "#95a5a6"]
       },
       "legend": null
     }
