@@ -51,7 +51,7 @@
       opacity: 0.9;
     }
 
-    /* 文章信息 */
+    /* article info */
     .article-header {
       background: white;
       padding: 30px 0;
@@ -84,7 +84,7 @@
       color: #7f8c8d;
     }
 
-    /* 摘要和关键词 */
+    /* key word */
     .abstract-section {
       background: white;
       padding: 15px 0;
@@ -116,7 +116,7 @@
       color: #1e3c72;
     }
 
-    /* 主要内容区域 */
+    /* body */
     .main-content {
       background: white;
       padding: 22px 0;
@@ -135,7 +135,7 @@
       margin-top: 0;
     }
 
-    /* 图表样式 */
+    /* chart */
     .figure-container {
       margin: 25px 0;
       background: white;
@@ -164,7 +164,7 @@
       color: #1e3c72;
     }
 
-    /* 文本内容样式 */
+    /* content text */
     .content-text {
       font-size: 15px;
       line-height: 1.7;
@@ -181,7 +181,7 @@
       break-inside: avoid;
     }
 
-    /* 页面容器 */
+    /* container */
     .page {
       max-width: 1200px;
       margin: 0 auto;
@@ -193,17 +193,17 @@
       padding: 0 40px;
     }
 
-    /* 页脚 */
+    /* footer */
     .journal-footer {
       background: #34495e;
       color: white;
       padding: 10px 0;
       text-align: left;
       font-size: 14px;
-      margin-top: 10px;
+      margin-top: 0px;
     }
 
-    /* 响应式设计 */
+    /*  */
     @media (max-width: 900px) {
       .pure-u-1-2 {
         width: 100%;
@@ -238,13 +238,13 @@
       }
     }
 
-    /* 强调文本样式 */
+    /* strong */
     strong {
       color: #1e3c72;
       font-weight: 600;
     }
 
-    /* 链接样式 */
+    /* link */
     a {
       color: #3498db;
       text-decoration: none;
@@ -254,12 +254,14 @@
       color: #2980b9;
       text-decoration: underline;
     }
+
   </style>
 </head>
 
 <body>
+  
   <div class="page">
-    <!-- 期刊头部 -->
+    <!-- title -->
     <div class="journal-header">
       <div class="container">
         <div class="journal-info">
@@ -267,7 +269,7 @@
       </div>
     </div>
 
-    <!-- 文章标题和作者信息 -->
+    <!-- title and author info -->
     <div class="article-header">
       <div class="container">
         <h1 class="article-title">Analysis of Australian Agriculture and Rainfall</h1>
@@ -279,7 +281,7 @@
       </div>
     </div>
 
-    <!-- 摘要和关键词 -->
+    <!-- abstract and key words -->
     <div class="abstract-section">
       <div class="container">
         <h2 class="abstract-title">Abstract</h2>
@@ -291,7 +293,7 @@
       </div>
     </div>
 
-    <!-- 主要内容 -->
+    <!-- body -->
     <div class="main-content">
       <div class="container">
 
@@ -333,9 +335,9 @@
         <!-- Section 2: Regional Variability Analysis -->
         <h2 class="section-title">Regional Rainfall Variations</h2>
 
-        <!-- 左右布局容器 -->
+        <!-- right and left -->
         <div style="display: flex; gap: 20px; margin-bottom: 30px; flex-wrap: wrap;">
-          <!-- 左侧：箱线图 -->
+          <!-- left box -->
           <div class="figure-container" style="flex: 1; min-width: 450px; max-width: 48%; margin-bottom: 0;">
             <div class="viz" style="overflow-x: auto;">
               <div id="box" style="width: 100%;"></div>
@@ -346,7 +348,7 @@
             </div>
           </div>
 
-          <!-- 右侧：条形图 -->
+          <!-- right bar -->
           <div class="figure-container" style="flex: 1; min-width: 450px; max-width: 48%; margin-bottom: 0;">
             <div class="viz" style="overflow-x: auto;">
               <div id="rainfall_anomaly" style="width: 100%;"></div>
@@ -404,7 +406,7 @@
           </div>
           <div class="figure-caption">
             X = mean annual rainfall (mm), Y = cereal yield (kg/ha).<br>
-            Data: World Bank WDI (CC BY 4.0).
+
           </div>
         </div>
 
@@ -569,7 +571,7 @@
           </p>
           Data source: 
           </p>
-          https://www.bom.gov.au/climate/rainfall/ 
+          Data: World Bank WDI (CC BY 4.0) https://www.bom.gov.au/climate/rainfall/ 
           </p>
           https://databank.worldbank.org/reports.aspx?source=2&series=AG.LND.PRCP.MM&country=#
 

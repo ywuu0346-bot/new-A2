@@ -417,7 +417,7 @@
         "y": { "field": "Index Value", "type": "quantitative" },
         "text": { "field": "label2017" }
       }
-    },
+    }
 
   ],
   "config": {
