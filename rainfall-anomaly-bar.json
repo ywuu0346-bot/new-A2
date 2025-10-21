@@ -1,13 +1,13 @@
  {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 800,
+  "width": "container",
   "height": 400,
   "title": {
     "text": "Regional Rainfall Deviations from Historical Average (36 months)",
     "font": "Garamond",
-    "fontSize": 20,
+    "fontSize": 15,
     "fontWeight": "bold",
-    "anchor": "middle",
+    "anchor": "left",
     "color": "#1e3c72"
   },
   "data": {

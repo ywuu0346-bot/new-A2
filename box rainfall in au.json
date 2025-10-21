@@ -1,13 +1,13 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 900,
+  "width": "container",
   "height": 380,
   "title": {
     "text": "Distribution of Station Rainfall by State (36 months)",
     "font": "Garamond",
-    "fontSize": 20,
+    "fontSize": 16,
     "fontWeight": "bold",
-    "anchor": "middle",
+    "anchor": "left",
     "color": "#1e3c72"
   },
   "data": {

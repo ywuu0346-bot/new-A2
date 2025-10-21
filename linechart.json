@@ -154,6 +154,77 @@
       }
     },
 
+        {
+      "transform": [
+        { "filter": "datum.Index == 'food_index' && datum.Year == 2017" },
+        { "calculate": "format(datum['Index Value'], '.2f')", "as": "label2017" }
+      ],
+      "mark": {
+        "type": "text",
+        "zindex": 999,
+        "font": "Garamond",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#e74c3c",
+        "dx": -14,
+        "dy": -12,
+        "align": "left",
+        "baseline": "bottom"
+      },
+      "encoding": {
+        "x": { "field": "Year", "type": "ordinal" },
+        "y": { "field": "Index Value", "type": "quantitative" },
+        "text": { "field": "label2017" }
+      }
+    },
+
+    {
+      "transform": [
+        { "filter": "datum.Index == 'crop_index' && datum.Year == 2018" },
+        { "calculate": "format(datum['Index Value'], '.2f')", "as": "label2020" }
+      ],
+      "mark": {
+        "type": "text",
+        "zindex": 999,
+        "font": "Garamond",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#3498db",
+        "dx": 20,
+        "dy": -22,
+        "align": "right",
+        "baseline": "top"
+      },
+      "encoding": {
+        "x": { "field": "Year", "type": "ordinal" },
+        "y": { "field": "Index Value", "type": "quantitative" },
+        "text": { "field": "label2020" }
+      }
+    },
+
+    {
+      "transform": [
+        { "filter": "datum.Index == 'crop_index' && datum.Year == 2019" },
+        { "calculate": "format(datum['Index Value'], '.2f')", "as": "label2020" }
+      ],
+      "mark": {
+        "type": "text",
+        "zindex": 999,
+        "font": "Garamond",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#3498db",
+        "dx": 13,
+        "dy": 10,
+        "align": "right",
+        "baseline": "top"
+      },
+      "encoding": {
+        "x": { "field": "Year", "type": "ordinal" },
+        "y": { "field": "Index Value", "type": "quantitative" },
+        "text": { "field": "label2020" }
+      }
+    },
 
     {
       "transform": [
@@ -177,7 +248,177 @@
         "y": { "field": "Index Value", "type": "quantitative" },
         "text": { "field": "label2020" }
       }
-    }
+    },
+
+    {
+      "transform": [
+        { "filter": "datum.Index == 'crop_index' && datum.Year == 2021" },
+        { "calculate": "format(datum['Index Value'], '.2f')", "as": "label2020" }
+      ],
+      "mark": {
+        "type": "text",
+        "zindex": 999,
+        "font": "Garamond",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#3498db",
+        "dx": 13,
+        "dy": -22,
+        "align": "right",
+        "baseline": "top"
+      },
+      "encoding": {
+        "x": { "field": "Year", "type": "ordinal" },
+        "y": { "field": "Index Value", "type": "quantitative" },
+        "text": { "field": "label2020" }
+      }
+    },
+
+    {
+      "transform": [
+        { "filter": "datum.Index == 'crop_index' && datum.Year == 2022" },
+        { "calculate": "format(datum['Index Value'], '.2f')", "as": "label2020" }
+      ],
+      "mark": {
+        "type": "text",
+        "zindex": 999,
+        "font": "Garamond",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#3498db",
+        "dx": 13,
+        "dy": -22,
+        "align": "right",
+        "baseline": "top"
+      },
+      "encoding": {
+        "x": { "field": "Year", "type": "ordinal" },
+        "y": { "field": "Index Value", "type": "quantitative" },
+        "text": { "field": "label2020" }
+      }
+    },
+
+    {
+      "transform": [
+        { "filter": "datum.Index == 'food_index' && datum.Year == 2018" },
+        { "calculate": "format(datum['Index Value'], '.2f')", "as": "label2017" }
+      ],
+      "mark": {
+        "type": "text",
+        "zindex": 999,
+        "font": "Garamond",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#e74c3c",
+        "dx": -16,
+        "dy": 25,
+        "align": "left",
+        "baseline": "bottom"
+      },
+      "encoding": {
+        "x": { "field": "Year", "type": "ordinal" },
+        "y": { "field": "Index Value", "type": "quantitative" },
+        "text": { "field": "label2017" }
+      }
+    },
+
+    {
+      "transform": [
+        { "filter": "datum.Index == 'food_index' && datum.Year == 2019" },
+        { "calculate": "format(datum['Index Value'], '.2f')", "as": "label2017" }
+      ],
+      "mark": {
+        "type": "text",
+        "zindex": 999,
+        "font": "Garamond",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#e74c3c",
+        "dx": -16,
+        "dy": -12,
+        "align": "left",
+        "baseline": "bottom"
+      },
+      "encoding": {
+        "x": { "field": "Year", "type": "ordinal" },
+        "y": { "field": "Index Value", "type": "quantitative" },
+        "text": { "field": "label2017" }
+      }
+    },
+
+    {
+      "transform": [
+        { "filter": "datum.Index == 'food_index' && datum.Year == 2020" },
+        { "calculate": "format(datum['Index Value'], '.2f')", "as": "label2017" }
+      ],
+      "mark": {
+        "type": "text",
+        "zindex": 999,
+        "font": "Garamond",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#e74c3c",
+        "dx": -16,
+        "dy": -12,
+        "align": "left",
+        "baseline": "bottom"
+      },
+      "encoding": {
+        "x": { "field": "Year", "type": "ordinal" },
+        "y": { "field": "Index Value", "type": "quantitative" },
+        "text": { "field": "label2017" }
+      }
+    },
+
+
+    {
+      "transform": [
+        { "filter": "datum.Index == 'food_index' && datum.Year == 2021" },
+        { "calculate": "format(datum['Index Value'], '.2f')", "as": "label2017" }
+      ],
+      "mark": {
+        "type": "text",
+        "zindex": 999,
+        "font": "Garamond",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#e74c3c",
+        "dx": -16,
+        "dy": -12,
+        "align": "left",
+        "baseline": "bottom"
+      },
+      "encoding": {
+        "x": { "field": "Year", "type": "ordinal" },
+        "y": { "field": "Index Value", "type": "quantitative" },
+        "text": { "field": "label2017" }
+      }
+    },
+
+    {
+      "transform": [
+        { "filter": "datum.Index == 'food_index' && datum.Year == 2022" },
+        { "calculate": "format(datum['Index Value'], '.2f')", "as": "label2017" }
+      ],
+      "mark": {
+        "type": "text",
+        "index": 999,
+        "font": "Garamond",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#e74c3c",
+        "dx": -16,
+        "dy": -12,
+        "align": "left",
+        "baseline": "bottom"
+      },
+      "encoding": {
+        "x": { "field": "Year", "type": "ordinal" },
+        "y": { "field": "Index Value", "type": "quantitative" },
+        "text": { "field": "label2017" }
+      }
+    },
+
   ],
   "config": {
     "font": "Garamond",
